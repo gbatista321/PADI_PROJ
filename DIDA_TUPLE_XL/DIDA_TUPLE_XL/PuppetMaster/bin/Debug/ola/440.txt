@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<File_Serializer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <type>0</type>
+  <tN>0</tN>
+  <s>ola</s>
+  <test>null</test>
+</File_Serializer>

@@ -1,0 +1,60 @@
+Z:\Downloads\RemotingSample1\Client\bin\Debug\Client.exe.config
+Z:\Downloads\RemotingSample1\Client\bin\Debug\Client.exe
+Z:\Downloads\RemotingSample1\Client\bin\Debug\Client.pdb
+Z:\Downloads\RemotingSample1\Client\bin\Debug\CommonTypes.dll
+Z:\Downloads\RemotingSample1\Client\bin\Debug\CommonTypes.pdb
+Z:\Downloads\RemotingSample1\Client\obj\Debug\Client.csprojAssemblyReference.cache
+Z:\Downloads\RemotingSample1\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+Z:\Downloads\RemotingSample1\Client\obj\Debug\Client.csproj.CopyComplete
+Z:\Downloads\RemotingSample1\Client\obj\Debug\Client.exe
+Z:\Downloads\RemotingSample1\Client\obj\Debug\Client.pdb
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\bin\Debug\Client.exe.config
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\bin\Debug\Client.exe
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\bin\Debug\Client.pdb
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\obj\Debug\Client.exe
+C:\Users\gonca\Desktop\padi\RemotingSample1\Client\obj\Debug\Client.pdb
+D:\padi\RemotingSample1\Client\bin\Debug\Client.exe.config
+D:\padi\RemotingSample1\Client\bin\Debug\Client.exe
+D:\padi\RemotingSample1\Client\bin\Debug\Client.pdb
+D:\padi\RemotingSample1\Client\bin\Debug\CommonTypes.dll
+D:\padi\RemotingSample1\Client\bin\Debug\CommonTypes.pdb
+D:\padi\RemotingSample1\Client\obj\Debug\Client.csprojAssemblyReference.cache
+D:\padi\RemotingSample1\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\padi\RemotingSample1\Client\obj\Debug\Client.csproj.CopyComplete
+D:\padi\RemotingSample1\Client\obj\Debug\Client.exe
+D:\padi\RemotingSample1\Client\obj\Debug\Client.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\bin\Debug\Client.exe.config
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\bin\Debug\Client.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\bin\Debug\Client.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\obj\Debug\Client.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Client\obj\Debug\Client.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\bin\Debug\Client.exe.config
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\bin\Debug\Client.exe
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\bin\Debug\Client.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\bin\Debug\CommonTypes.dll
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\bin\Debug\CommonTypes.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\obj\Debug\Client.csprojAssemblyReference.cache
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\obj\Debug\Client.csproj.CopyComplete
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\obj\Debug\Client.exe
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Client\obj\Debug\Client.pdb
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\bin\Debug\Client.exe.config
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\bin\Debug\Client.exe
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\bin\Debug\Client.pdb
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\obj\Debug\Client.exe
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Client\obj\Debug\Client.pdb

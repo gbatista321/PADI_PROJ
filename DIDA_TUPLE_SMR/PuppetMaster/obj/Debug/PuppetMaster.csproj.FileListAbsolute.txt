@@ -1,0 +1,48 @@
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\PuppetMaster.exe.config
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\PuppetMaster.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\PuppetMaster.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\Client.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\Server.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\Client.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\Client.exe.config
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\Server.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\Server.exe.config
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.csproj.CopyComplete
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\PuppetMaster.exe.config
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\PuppetMaster.exe
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\PuppetMaster.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\Client.exe
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\Server.exe
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\CommonTypes.dll
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\Client.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\Client.exe.config
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\Server.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\Server.exe.config
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\bin\Debug\CommonTypes.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.csprojAssemblyReference.cache
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.csproj.CoreCompileInputs.cache
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.csproj.CopyComplete
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.exe
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\PuppetMaster\obj\Debug\PuppetMaster.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\PuppetMaster.exe.config
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\PuppetMaster.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\PuppetMaster.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\Client.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\Server.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\Client.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\Client.exe.config
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\Server.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\Server.exe.config
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\obj\Debug\PuppetMaster.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\obj\Debug\PuppetMaster.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\obj\Debug\PuppetMaster.csproj.CopyComplete
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\obj\Debug\PuppetMaster.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\PuppetMaster\obj\Debug\PuppetMaster.pdb

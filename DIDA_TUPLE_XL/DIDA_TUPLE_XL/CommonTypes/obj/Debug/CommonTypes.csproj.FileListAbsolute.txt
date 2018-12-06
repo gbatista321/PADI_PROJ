@@ -1,0 +1,34 @@
+Z:\Downloads\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.dll
+Z:\Downloads\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.pdb
+Z:\Downloads\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csproj.CoreCompileInputs.cache
+Z:\Downloads\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.dll
+Z:\Downloads\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.pdb
+Z:\Downloads\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.pdb
+D:\padi\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.dll
+D:\padi\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.pdb
+D:\padi\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csprojAssemblyReference.cache
+D:\padi\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csproj.CoreCompileInputs.cache
+D:\padi\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.dll
+D:\padi\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csprojAssemblyReference.cache
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.dll
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csprojAssemblyReference.cache
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.csproj.CoreCompileInputs.cache
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.dll
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\CommonTypes\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\CommonTypes\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\CommonTypes\obj\Debug\CommonTypes.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\CommonTypes\obj\Debug\CommonTypes.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\CommonTypes\obj\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\CommonTypes\obj\Debug\CommonTypes.pdb

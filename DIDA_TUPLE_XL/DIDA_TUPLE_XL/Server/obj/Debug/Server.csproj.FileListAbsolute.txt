@@ -1,0 +1,60 @@
+Z:\Downloads\RemotingSample1\Server\bin\Debug\Server.exe.config
+Z:\Downloads\RemotingSample1\Server\bin\Debug\Server.exe
+Z:\Downloads\RemotingSample1\Server\bin\Debug\Server.pdb
+Z:\Downloads\RemotingSample1\Server\bin\Debug\CommonTypes.dll
+Z:\Downloads\RemotingSample1\Server\bin\Debug\CommonTypes.pdb
+Z:\Downloads\RemotingSample1\Server\obj\Debug\Server.csprojAssemblyReference.cache
+Z:\Downloads\RemotingSample1\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+Z:\Downloads\RemotingSample1\Server\obj\Debug\Server.csproj.CopyComplete
+Z:\Downloads\RemotingSample1\Server\obj\Debug\Server.exe
+Z:\Downloads\RemotingSample1\Server\obj\Debug\Server.pdb
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\bin\Debug\Server.exe.config
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\bin\Debug\Server.exe
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\bin\Debug\Server.pdb
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\obj\Debug\Server.exe
+C:\Users\gonca\Desktop\padi\RemotingSample1\Server\obj\Debug\Server.pdb
+D:\padi\RemotingSample1\Server\bin\Debug\Server.exe.config
+D:\padi\RemotingSample1\Server\bin\Debug\Server.exe
+D:\padi\RemotingSample1\Server\bin\Debug\Server.pdb
+D:\padi\RemotingSample1\Server\bin\Debug\CommonTypes.dll
+D:\padi\RemotingSample1\Server\bin\Debug\CommonTypes.pdb
+D:\padi\RemotingSample1\Server\obj\Debug\Server.csprojAssemblyReference.cache
+D:\padi\RemotingSample1\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+D:\padi\RemotingSample1\Server\obj\Debug\Server.csproj.CopyComplete
+D:\padi\RemotingSample1\Server\obj\Debug\Server.exe
+D:\padi\RemotingSample1\Server\obj\Debug\Server.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\bin\Debug\Server.exe.config
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\bin\Debug\Server.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\bin\Debug\Server.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\obj\Debug\Server.exe
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\Server\obj\Debug\Server.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\bin\Debug\Server.exe.config
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\bin\Debug\Server.exe
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\bin\Debug\Server.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\bin\Debug\CommonTypes.dll
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\bin\Debug\CommonTypes.pdb
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\obj\Debug\Server.csprojAssemblyReference.cache
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\obj\Debug\Server.csproj.CopyComplete
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\obj\Debug\Server.exe
+Z:\Desktop\PADI_PROJ-master (1)\PADI_PROJ-master\RemotingSample1\Server\obj\Debug\Server.pdb
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\bin\Debug\Server.exe.config
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\bin\Debug\Server.exe
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\bin\Debug\Server.pdb
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\obj\Debug\Server.exe
+C:\Users\gonca\Desktop\padi\DIDA_TUPLE_XL\DIDA_TUPLE_XL\Server\obj\Debug\Server.pdb

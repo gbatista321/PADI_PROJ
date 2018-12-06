@@ -1,0 +1,34 @@
+add <"a",DADTestA(1,"b")>aaaaaaaaaaaaaaaa
+begin-repeat 3aaaaaaaaaaaaaaaa
+read <"*",null>aaaaaaaaaaaaaaaa
+wait 500aaaaaaaaaaaaaaaa
+read <"a*",DADTestA>aaaaaaaaaaaaaaaa
+read <"*a",DADTestA(1,"b")>aaaaaaaaaaaaaaaa
+end-repeataaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaa
+add <"xx",DADTestB(1,"c",2)>aaaaaaaaaaaaaaaa
+take <"x*",DADTestB>aaaaaaaaaaaaaaaa
+add <"xx",DADTestC(1,"b","d")>aaaaaaaaaaaaaaaa
+read <"*a",DADTestA(1,"b")>aaaaaaaaaaaaaaaa
+add <"a",DADTestA(1,"b")>aaaaaaaaaaaaaaaa
+add
+2
+<"a",DADTestA(1,"b")>
+"a",DADTestA(1,"b")
+"a",DADTestA(1,"b")
+begin-repeat 3aaaaaaaaaaaaaaaa
+begin-repeat
+2
+3
+3
+3
+read <"*",null>aaaaaaaaaaaaaaaa
+read
+2
+<"*",null>
+"*",null
+"*",null
+WilDCARD FOUND
+wait 500aaaaaaaaaaaaaaaa
+wait
+2

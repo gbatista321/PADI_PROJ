@@ -1,0 +1,11 @@
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\obj\Debug\TupleSpace.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\obj\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\RemotingSample1\CommonTypes\obj\Debug\TupleSpace.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\obj\Debug\TupleSpace.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\obj\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\obj\Debug\CommonTypes.pdb
