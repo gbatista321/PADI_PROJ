@@ -106,7 +106,7 @@ namespace RemotingSample {
             }
             channel = new TcpChannel(props, null, provider);
             //String reference = "tcp://" + GetIPAddress() + ":" + port + "/MyRemoteObjectName";    
-            mo = new MyRemoteObject(min_delay, max_delay);
+            mo = new MyRemoteObject(min_delay, max_delay,url);
             RemotingServices.Marshal(mo,
                  "MyRemoteObjectName/" + name,
                  typeof(MyRemoteObject));
@@ -125,5 +125,10 @@ namespace RemotingSample {
 			System.Console.WriteLine("<enter> para sair...");
 			System.Console.ReadLine();
 		}
-	}
+
+        public Uri getUri()
+        {
+            return url;
+        }
+    }
 }

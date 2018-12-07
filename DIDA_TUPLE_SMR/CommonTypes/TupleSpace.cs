@@ -9,6 +9,7 @@ using System.Runtime.Remoting;
 using System.Net.Sockets;
 using System.Text;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace RemotingSample
 {
@@ -68,6 +69,8 @@ namespace RemotingSample
                 Console.WriteLine("Server   " + s);
             }
             Console.WriteLine("--------------------------------------------------------");
+            List<Task> TaskList = new List<Task>();
+            Task t = null;
             foreach (string s in urls.Keys)
             {
                 try
@@ -80,10 +83,13 @@ namespace RemotingSample
                     MyRemoteInterface obj = (MyRemoteInterface)Activator.GetObject(
                     typeof(MyRemoteInterface), reference);
 
-                    int i = obj.update(tupleSpace2);
+                    t = new Task(() =>
+                    {
+                        obj.update(tupleSpace2);
+                    });
+                    t.Start();
+                    TaskList.Add(t);
 
-                    if (i == 1)
-                        continue;
                 }
                 catch (Exception e)
                 {
@@ -95,6 +101,7 @@ namespace RemotingSample
 
                 }
             }
+            Task.WaitAll(TaskList.ToArray());
             foreach (string down in serversDown)
                 urls.Remove(down);
         }

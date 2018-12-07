@@ -12,6 +12,7 @@ using System.Collections;
 using System.Runtime.Serialization.Formatters;
 using System.Net;
 using System.Threading;
+using System.Runtime.CompilerServices;
 
 namespace RemotingSample {
 
@@ -64,11 +65,21 @@ namespace RemotingSample {
             MyRemoteInterface obj=null;
             while (obj == null)
             {
-                String reference = "tcp://localhost:" + urls[urlRead].Port + "/MyRemoteObjectName/" + names[urlRead];
-                obj = (MyRemoteInterface)Activator.GetObject(
-                typeof(MyRemoteInterface), reference);
-                if (obj == null)
-                    urlRead++;
+                try
+                {
+
+                    String reference = "tcp://localhost:" + urls[urlRead].Port + "/MyRemoteObjectName/" + names[urlRead];
+                    obj = (MyRemoteInterface)Activator.GetObject(
+                    typeof(MyRemoteInterface), reference);
+                    if (obj == null)
+                        urlRead++;
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.StackTrace);
+                    Console.ReadLine();
+                }
 
             }
             executeMain(obj, 1, fileName, urlRead);

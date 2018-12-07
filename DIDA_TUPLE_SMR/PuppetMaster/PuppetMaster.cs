@@ -234,7 +234,6 @@ namespace PuppetMaster
                 case "Server":
 
                     uri = new Uri(splited[2]);
-                    Console.WriteLine(Dns.GetHostAddresses(uri.Host)[0]);
                     sendData(l, uri);
                     break;
 
@@ -254,7 +253,6 @@ namespace PuppetMaster
                     id = splited[1];
                     if (getServers().ContainsKey(id))
                     {
-                        Console.WriteLine("RRRRRRRRRRRRRRRR");
                         uri = getServers()[id].getUri();
                         sendData(l, uri);
                     }
@@ -290,6 +288,10 @@ namespace PuppetMaster
 
         public void sendData(string l,Uri uri)
         {
+            Console.WriteLine("-----------------------------------------------------------------------------------------------");
+            Console.WriteLine("Sending data to PCS location: " + Dns.GetHostAddresses(uri.Host)[0]+":"+uri.Port );
+            Console.WriteLine(l);
+            Console.WriteLine("-----------------------------------------------------------------------------------------------");
             var Client = new UdpClient();
             var RequestData = Encoding.ASCII.GetBytes(l);
 

@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using System.Runtime.Remoting;
+using System.Net;
 
 namespace RemotingSample
 {
@@ -17,12 +18,17 @@ namespace RemotingSample
         bool freeze = false;
         private int max_delay;
         private int min_delay;
+        private Uri uri;
 
-        public MyRemoteObject() { }
+        public MyRemoteObject()
+        {
+        }
 
-        public MyRemoteObject(int min, int max) {
+        public MyRemoteObject(int min, int max, Uri uri2)
+        {
             min_delay = min;
             max_delay = max;
+            uri = uri2;
         }
 
         public void setCrash(bool c)
@@ -42,8 +48,14 @@ namespace RemotingSample
         [MethodImpl(MethodImplOptions.Synchronized)]
         public int add(List<string> l)
         {
-            if (crash)
-                throw new RemotingException();
+
+            Console.WriteLine("-----------------------------------------------------------------------------------");
+            Console.WriteLine("Im object in: " + Dns.GetHostAddresses(uri.Host)[0] + " in port: " + uri.Port);
+            if (l != null)
+                Console.WriteLine("And I received add operation: " + l[0]);
+            Console.WriteLine("-----------------------------------------------------------------------------------");
+
+
             while (freeze)
                 continue;
 
@@ -70,11 +82,11 @@ namespace RemotingSample
 
 
             foreach (string s in l)
-            {     
+            {
                 if (!s.Contains("("))
                 {
                     if (s.Contains("\"") || s.Equals("null"))
-                        aux.Add(new Field(s.Replace("\"","")));
+                        aux.Add(new Field(s.Replace("\"", "")));
                     else
                     {
                         Type type = assembly.GetType("RemotingSample." + s);
@@ -93,18 +105,18 @@ namespace RemotingSample
 
 
                 }
-                
+
             }
 
             if (tupleSpace.ContainsKey(key))
                 tupleSpace[key].Add(aux);
-            
+
             else
-            {           
+            {
                 List<List<Field>> aux2 = new List<List<Field>>();
                 aux2.Add(aux);
                 tupleSpace.Add(key, aux2);
-                
+
             }
 
             return 1;
@@ -114,8 +126,11 @@ namespace RemotingSample
 
         public List<List<Field>> readTuple(List<string> l)
         {
-            if (crash)
-                throw new RemotingException();
+            Console.WriteLine("-----------------------------------------------------------------------------------");
+            Console.WriteLine("Im object in: " + Dns.GetHostAddresses(uri.Host)[0] + " in port: " + uri.Port);
+            if (l != null)
+                Console.WriteLine("And I received read operation : " + l[0]);
+            Console.WriteLine("-----------------------------------------------------------------------------------");
 
             while (freeze)
                 continue;
@@ -150,7 +165,7 @@ namespace RemotingSample
                 if (!s.Contains("("))
                 {
                     if (s.Contains("\"") || s.Equals("null"))
-                        aux.Add(new Field(s.Replace("\"","")));
+                        aux.Add(new Field(s.Replace("\"", "")));
                     else
                     {
                         Type type = assembly.GetType("RemotingSample." + s);
@@ -183,7 +198,7 @@ namespace RemotingSample
                 string[] subKey = key.Split('*');
                 if (key.StartsWith("*"))
                 {
-                    foreach(string k in tupleSpace.Keys)
+                    foreach (string k in tupleSpace.Keys)
                     {
                         if (k.EndsWith(subKey[1]))
                             key = k;
@@ -202,7 +217,10 @@ namespace RemotingSample
             }
             else keys.Add(key);
 
-            foreach (string k in keys) {
+            foreach (string k in keys)
+            {
+                if (!tupleSpace.Keys.Contains(k))
+                    continue;
                 foreach (List<Field> ls in tupleSpace[k])
                 {
                     if (!(ls.Count == l.Count))
@@ -238,158 +256,19 @@ namespace RemotingSample
         public List<List<Field>> take(List<string> l)
         {
 
-            if (crash)
-                throw new RemotingException();
+            Console.WriteLine("-----------------------------------------------------------------------------------");
+            Console.WriteLine("Im object in: " + Dns.GetHostAddresses(uri.Host)[0] + " in port: " + uri.Port);
+            if (l != null)
+            {
+                string t = "";
+                foreach (string s in l)
+                    t += s + " ";
+                Console.WriteLine("And I received take operation: " + t);
+            }
+            Console.WriteLine("-----------------------------------------------------------------------------------");
 
             while (freeze)
                 continue;
-            Random r = new Random();
-            int rInt = r.Next(min_delay, max_delay); //for ints
-            System.Threading.Thread.Sleep(rInt);
-
-            List<Field> aux = new List<Field>();
-            List<List<Field>> aux2 = new List<List<Field>>();
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            List<int> takes = new List<int>();
-
-            if (l == null)
-                return null;
-            string first = l[0];
-            int founded = 0;
-            string key;
-            
-            if (!first.Contains("("))
-                key = first.Replace("\"", "");
-            else
-            {
-                string[] key2 = first.Split(new char[] { '(', ')', ',' });
-                key = key2[0];
-                
-            }
-
-
-            foreach (string s in l)
-            {
-                if (!s.Contains("("))
-                {
-                    if (s.Contains("\"") || s.Equals("null"))
-                        aux.Add(new Field(s.Replace("\"", "")));
-                    else
-                    {
-                        Type type = assembly.GetType("RemotingSample." + s);              
-                        aux.Add(new Field(Activator.CreateInstance(type), 2));
-                    }
-                }
-                else
-                {
-                    string[] splited = s.Split(new char[] { '(', ')', ',' });
-                    string func = splited[0];
-                    object[] o = new object[splited.Length - 2];
-                    for (int i = 1; i < splited.Length-1; i++)
-                        o[i - 1] = funcArgs(splited[i]);
-                    Type type = assembly.GetType("RemotingSample." + func);
-                    aux.Add(new Field(Activator.CreateInstance(type, o), 0));
-
-
-                }
-
-            }
-
-            List<string> keys = new List<string>();
-            if (key.Equals("null") || key.Equals("*"))
-            {
-                keys = tupleSpace.Keys.ToList();
-            }
-            else if (key.Contains("*"))
-            {
-                string[] subKey = key.Split('*');
-                if (key.StartsWith("*"))
-                {
-                    foreach (string k in tupleSpace.Keys)
-                    {
-                        if (k.EndsWith(subKey[1]))
-                            key = k;
-                    }
-                    keys.Add(key);
-                }
-                else if (key.EndsWith("*"))
-                {
-                    foreach (string k in tupleSpace.Keys)
-                    {
-                        if (k.StartsWith(subKey[1]))
-                            key = k;
-                    }
-                    keys.Add(key);
-                }
-            }
-            else keys.Add(key);
-            
-            foreach (string k in keys)
-            {
-                
-               
-                int j = 0;
-                if (!tupleSpace.Keys.Contains(k))
-                    continue;
-                foreach (List<Field> ls in tupleSpace[k])
-                {
-                    if (!(ls.Count == l.Count))
-                        continue;
-                    bool eq = true;
-                    for (int i = 0; i < ls.Count; i++)
-                    {
-                        if (aux[i].equals(ls[i]))
-                            continue;
-                        else
-                        {
-                            eq = false;
-                            break;
-
-                        }
-
-                    }
-                    if (eq)
-                    {
-                        aux2.Add(ls);
-                        takes.Add(j);
-                        founded = 1;
-                        continue;
-                    }
-                    j++;
-                }
-                foreach (int w in takes)
-                    tupleSpace[k].RemoveAt(w);
-                if (tupleSpace[k].Count == 0)
-                    tupleSpace.Remove(k);
-            }
-                if (founded == 1)
-                return aux2;
-            else
-                return null;
-        }
-
-        public static object funcArgs(string splited)
-        {
-            object args;
-            int j;
-            if (splited.StartsWith("\"") && splited.EndsWith("\""))
-            {       
-                args = splited;
-            }
-            else
-            {
-                try
-                {
-                    Int32.TryParse(splited, out j);
-                    args = j;
-                }
-                catch (FormatException) { return null; }
-            }
-            return args;
-        }
-
-        public List<List<Field>> selectTuple(List<string> l)
-        {
             Random r = new Random();
             int rInt = r.Next(min_delay, max_delay); //for ints
             System.Threading.Thread.Sleep(rInt);
@@ -504,95 +383,257 @@ namespace RemotingSample
                     }
                     j++;
                 }
+                foreach (int w in takes)
+                    tupleSpace[k].RemoveAt(w);
+                if (tupleSpace[k].Count == 0)
+                    tupleSpace.Remove(k);
             }
             if (founded == 1)
                 return aux2;
             else
                 return null;
         }
+
+
+        public List<List<Field>> selectTuples(List<string> l)
+        {
+            Console.WriteLine("-----------------------------------------------------------------------------------");
+            Console.WriteLine("Im object in: " + Dns.GetHostAddresses(uri.Host)[0] + " in port: " + uri.Port);
+            if (l != null)
+                Console.WriteLine("And I received: " + l[0]);
+            Console.WriteLine("-----------------------------------------------------------------------------------");
+
+            while (freeze)
+                continue;
+
+            Random r = new Random();
+            int rInt = r.Next(min_delay, max_delay); //for ints
+            System.Threading.Thread.Sleep(rInt);
+
+            List<Field> aux = new List<Field>();
+            List<List<Field>> aux2 = new List<List<Field>>();
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            if (l == null)
+            {
+                return null;
+            }
+            string first = l[0];
+            int founded = 0;
+            string key;
+
+            if (!first.Contains("("))
+                key = first.Replace("\"", "");
+            else
+            {
+                string[] key2 = first.Split(new char[] { '(', ')', ',' });
+                key = key2[0];
+            }
+
+
+            foreach (string s in l)
+            {
+                if (!s.Contains("("))
+                {
+                    if (s.Contains("\"") || s.Equals("null"))
+                        aux.Add(new Field(s.Replace("\"", "")));
+                    else
+                    {
+                        Type type = assembly.GetType("RemotingSample." + s);
+                        aux.Add(new Field(Activator.CreateInstance(type), 2));
+                    }
+                }
+                else
+                {
+                    string[] splited = s.Split(new char[] { '(', ')', ',' });
+                    string func = splited[0];
+                    object[] o = new object[splited.Length - 2];
+                    for (int i = 1; i < splited.Length - 1; i++)
+                        o[i - 1] = funcArgs(splited[i]);
+                    Type type = assembly.GetType("RemotingSample." + func);
+                    aux.Add(new Field(Activator.CreateInstance(type, o), 0));
+
+
+                }
+
+            }
+
+
+            List<string> keys = new List<string>();
+            if (key.Equals("null") || key.Equals("*"))
+            {
+                keys = tupleSpace.Keys.ToList();
+            }
+            else if (key.Contains("*"))
+            {
+                string[] subKey = key.Split('*');
+                if (key.StartsWith("*"))
+                {
+                    foreach (string k in tupleSpace.Keys)
+                    {
+                        if (k.EndsWith(subKey[1]))
+                            key = k;
+                    }
+                    keys.Add(key);
+                }
+                else if (key.EndsWith("*"))
+                {
+                    foreach (string k in tupleSpace.Keys)
+                    {
+                        if (k.StartsWith(subKey[0]))
+                            key = k;
+                    }
+                    keys.Add(key);
+                }
+            }
+            else keys.Add(key);
+
+            foreach (string k in keys)
+            {
+                foreach (List<Field> ls in tupleSpace[k])
+                {
+                    if (!(ls.Count == l.Count))
+                        continue;
+                    bool eq = true;
+                    for (int i = 0; i < ls.Count; i++)
+                    {
+                        if (aux[i].equals(ls[i]))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            eq = false;
+                            break;
+                        }
+
+                    }
+                    if (eq)
+                    {
+                        aux2.Add(ls);
+                        founded = 1;
+                    }
+                }
+            }
+            if (founded == 1)
+            {
+                try
+                {
+                    lock (aux2)
+                    {
+                        return aux2;
+                    }
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            else
+                return null;
+        }
+
+        public static object funcArgs(string splited)
+        {
+            object args;
+            int j;
+            if (splited.StartsWith("\"") && splited.EndsWith("\""))
+            {
+                args = splited;
+            }
+            else
+            {
+                try
+                {
+                    Int32.TryParse(splited, out j);
+                    args = j;
+                }
+                catch (FormatException) { return null; }
+            }
+            return args;
+        }
     }
 
-
     public class DADTestA
-        {
-            public int i1;
-            public string s1;
+    {
+        public int i1;
+        public string s1;
 
-            public DADTestA() { }
-            public DADTestA(int pi1, string ps1)
-            {
-                i1 = pi1;
-                s1 = ps1;
-            }
-        public override string ToString()
+        public DADTestA() { }
+        public DADTestA(int pi1, string ps1)
         {
-           return this.i1 + "    " + this.s1;
+            i1 = pi1;
+            s1 = ps1;
         }
-            public bool Equals(DADTestA o)
+    public override string ToString()
+    {
+        return this.i1 + "    " + this.s1;
+    }
+        public bool Equals(DADTestA o)
+        {
+            if (o == null)
             {
-                if (o == null)
-                {
+            return false;
+            }
+            else
+            {
+                return ((this.i1 == o.i1) && (this.s1.Equals(o.s1)));
+            }
+        }
+    }
+
+    public class DADTestB
+    {
+        public int i1;
+        public string s1;
+        public int i2;
+        public DADTestB() { }
+        public DADTestB(int pi1, string ps1, int pi2)
+        {
+            i1 = pi1;
+            s1 = ps1;
+            i2 = pi2;
+        }
+
+        public bool Equals(DADTestB o)
+        {
+            if (o == null)
+            {
                 return false;
-                }
-                else
-                {
-                    return ((this.i1 == o.i1) && (this.s1.Equals(o.s1)));
-                }
+            }
+            else
+            {
+                return ((this.i1 == o.i1) && (this.s1.Equals(o.s1)) && (this.i2 == o.i2));
             }
         }
+    }
 
-        public class DADTestB
+    public class DADTestC
     {
-            public int i1;
-            public string s1;
-            public int i2;
-            public DADTestB() { }
-            public DADTestB(int pi1, string ps1, int pi2)
-            {
-                i1 = pi1;
-                s1 = ps1;
-                i2 = pi2;
-            }
+        public int i1;
+        public string s1;
+        public string s2;
 
-            public bool Equals(DADTestB o)
-            {
-                if (o == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return ((this.i1 == o.i1) && (this.s1.Equals(o.s1)) && (this.i2 == o.i2));
-                }
-            }
+        public DADTestC() { }
+        public DADTestC(int pi1, string ps1, string ps2)
+        {
+            i1 = pi1;
+            s1 = ps1;
+            s2 = ps2;
         }
 
-        public class DADTestC
-    {
-            public int i1;
-            public string s1;
-            public string s2;
-
-            public DADTestC() { }
-            public DADTestC(int pi1, string ps1, string ps2)
+        public bool Equals(DADTestC o)
+        {
+            if (o == null)
             {
-                i1 = pi1;
-                s1 = ps1;
-                s2 = ps2;
+                return false;
             }
-
-            public bool Equals(DADTestC o)
+            else
             {
-                if (o == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return ((this.i1 == o.i1) && (this.s1.Equals(o.s1)) && (this.s2.Equals(o.s2)));
-                }
+                return ((this.i1 == o.i1) && (this.s1.Equals(o.s1)) && (this.s2.Equals(o.s2)));
             }
         }
+    }
 
     public class Field : MarshalByRefObject
     {
@@ -692,7 +733,7 @@ namespace RemotingSample
         List<List<Field>> readTuple(List<string> l);
         List<List<Field>> take(List<string> l);
 
-        List<List<Field>> selectTuple(List<string> l);
+        List<List<Field>> selectTuples(List<string> l);
 
 
     }

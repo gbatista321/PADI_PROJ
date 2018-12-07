@@ -101,6 +101,7 @@ namespace PuppetMaster
                     try
                     {
                         p = execute(l, p);
+                        p.sendToPCS(l);
                     }
                     catch (Exception e)
                     {
@@ -109,7 +110,7 @@ namespace PuppetMaster
                         Console.WriteLine(l);
                         Console.WriteLine(e.GetType());
                         Console.WriteLine(e.StackTrace);
-                        Console.ReadLine();
+                        Console.WriteLine(e.Message);
                     }
 
                 }
@@ -126,6 +127,7 @@ namespace PuppetMaster
                 try
                 {
                     p = execute(l, p);
+                    p.sendToPCS(l);
                 }
                 catch (Exception)
                 {
@@ -165,11 +167,6 @@ namespace PuppetMaster
                     Server s = new Server(id, uri, min_delay, max_delay);
                     p.getServers().Add(id, s);
                     p.setNumS(p.getNumS() + 1);
-                    Thread th = new Thread(new ThreadStart(s.executeByPuppet));
-                    th.Start();
-
-
-
 
                     break;
 
@@ -186,49 +183,14 @@ namespace PuppetMaster
 
                     Client c = new Client(id, uri, script, p.getUrls(), p.getNames());
                     p.getClients().Add(id, c);
-                    Thread th2 = new Thread(new ThreadStart(c.executeByPuppet));
-                    th2.Start();
-
                     break;
 
                 /* in this next commands, check if the ip is the same as localhost, if not need to get the information from PCS*/
-
-                case "Status":
-                    foreach (Server s2 in p.serversCrashed.Values)
-                        s2.status();
-                    foreach (Server s2 in p.getServers().Values)
-                        s2.status();
-                    break;
-
-                case "Crash":
-                    id = splited[1];
-                    if (p.getServers().ContainsKey(id))
-                    {
-
-                        p.setNumS(p.getNumS() - 1);
-                        p.getServers()[id].setCrash(true);
-                        p.serversCrashed.Add(id, p.getServers()[id]);
-                        p.getServers().Remove(id);
-                    }
-
-                    break;
-
-                case "Freeze":
-                    id = splited[1];
-                    if (p.getServers().ContainsKey(id))
-                        p.getServers()[id].setFreeze(true);
-                    break;
-
-                case "Unfreeze":
-                    id = splited[1];
-                    if (p.getServers().ContainsKey(id))
-                        p.getServers()[id].setFreeze(false);
-                    break;
-
                 case "Wait":
                     Int32.TryParse(splited[1], out delay);
                     System.Threading.Thread.Sleep(delay);
                     break;
+
             }
             return p;
         }
@@ -261,18 +223,82 @@ namespace PuppetMaster
             }
         }
 
-        public void sendToPCS(string l, string ip, int port)
+        public void sendToPCS(string l)
         {
+            string[] splited = l.Split(new char[] { ' ' });
+            string cmd = splited[0];
+            string id;
+            Uri uri = null;
+
+            switch (cmd)
+            {
+                case "Server":
+
+                    uri = new Uri(splited[2]);
+                    sendData(l, uri);
+                    break;
+
+                case "Client":
+                    uri = new Uri(splited[2]);
+                    sendData(l, uri);
+                    break;
+
+                /* in this next commands, check if the ip is the same as localhost, if not need to get the information from PCS*/
+
+                case "Status":
+                    foreach (Server s in getServers().Values)
+                        sendData(l, s.getUri());
+                    break;
+
+                case "Crash":
+                    id = splited[1];
+                    if (getServers().ContainsKey(id))
+                    {
+                        uri = getServers()[id].getUri();
+                        sendData(l, uri);
+                    }
+
+                    break;
+
+                case "Freeze":
+                    id = splited[1];
+                    if (getServers().ContainsKey(id))
+                    {
+                        uri = getServers()[id].getUri();
+                        sendData(l, uri);
+                    }
+
+                    break;
+
+                case "Unfreeze":
+                    id = splited[1];
+                    if (getServers().ContainsKey(id))
+                    {
+                        uri = getServers()[id].getUri();
+                        sendData(l, uri);
+                    }
+
+                    break;
+
+
+            }
 
             //---create a TCPClient object at the IP and port no.---
-            TcpClient client = new TcpClient(ip, port);
-            NetworkStream nwStream = client.GetStream();
-            byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(l);
 
-            //---send the text---
-            Console.WriteLine("Sending : " + l);
-            nwStream.Write(bytesToSend, 0, bytesToSend.Length);
-            client.Close();
+        }
+
+        public void sendData(string l, Uri uri)
+        {
+            Console.WriteLine("-----------------------------------------------------------------------------------------------");
+            Console.WriteLine("Sending data to PCS location: " + Dns.GetHostAddresses(uri.Host)[0] + ":" + uri.Port);
+            Console.WriteLine(l);
+            Console.WriteLine("-----------------------------------------------------------------------------------------------");
+            var Client = new UdpClient();
+            var RequestData = Encoding.ASCII.GetBytes(l);
+
+            Client.EnableBroadcast = true;
+            Client.Send(RequestData, RequestData.Length, new IPEndPoint(Dns.GetHostAddresses(uri.Host)[0], 10000));
+            Client.Close();
         }
 
         public static string GetIPAddress()

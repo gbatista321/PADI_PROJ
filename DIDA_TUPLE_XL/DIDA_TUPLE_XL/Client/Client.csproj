@@ -106,8 +106,8 @@
     <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\CommonTypes\CommonTypes.csproj">
-      <Name>CommonTypes</Name>
+    <ProjectReference Include="..\CommonTypes\TupleSpace.csproj">
+      <Name>TupleSpace</Name>
       <Project>{DDFD7B0B-AEC6-4ED4-BDD4-8CE212D28158}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>

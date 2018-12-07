@@ -14,40 +14,192 @@ namespace PCS
 {
     class Program
     {
+
+        private IDictionary<string, Server> servers = new Dictionary<string, Server>();
+        private IDictionary<string, Server> serversCrashed = new Dictionary<string, Server>();
+        private IDictionary<string, Client> clients = new Dictionary<string, Client>();
+        private List<Uri> urls = new List<Uri>();
+        private static List<string> names = new List<string>();
+        IDictionary<string, Uri> urlsD = new Dictionary<string, Uri>();
+        private int numServers = 0;
+
+        public void setServers(IDictionary<string, Server> s)
+        {
+            servers = s;
+        }
+
+        public void setClients(IDictionary<string, Client> c)
+        {
+            clients = c;
+        }
+
+        public void setUrls(List<Uri> l)
+        {
+            urls = l;
+        }
+
+        public IDictionary<string, Uri> getUrlsD()
+        {
+            return urlsD;
+        }
+
+        public void setNames(List<string> l)
+        {
+            names = l;
+        }
+
+        public IDictionary<string, Server> getServers()
+        {
+            return servers;
+        }
+
+        public IDictionary<string, Client> getClients()
+        {
+            return clients;
+        }
+
+        public List<Uri> getUrls()
+        {
+            return urls;
+        }
+
+        public List<string> getNames()
+        {
+            return names;
+        }
+
+        private void setNumS(int n)
+        {
+            numServers = n;
+        }
+
+        private int getNumS()
+        {
+            return numServers;
+        }
+
+        public Program() { }
+
         static void Main(string[] args)
         {
-            IDictionary<string, Server> servers = new Dictionary<string, Server>();
-            IDictionary<string, Client> clients = new Dictionary<string, Client>();
-            int bad = 0; 
-
-            IPAddress localAdd = IPAddress.Parse(GetIPAddress());
-            TcpListener listener = new TcpListener(localAdd, 10000);
-            Console.WriteLine("Listening...");
-            listener.Start();
+            Program p = new Program();
+            Console.WriteLine(GetIPAddress());
 
             //---incoming client connected---
-            
 
+            var server = new UdpClient(10000);
             while (true)
             {
-                TcpClient client = listener.AcceptTcpClient();
-
-                //---get the incoming data through a network stream---
-                NetworkStream nwStream = client.GetStream();
-                byte[] buffer = new byte[client.ReceiveBufferSize];
-
-                //---read incoming stream---
-                int bytesRead = nwStream.Read(buffer, 0, client.ReceiveBufferSize);
-
-                //---convert the data received into a string---
-                string dataReceived = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-
-                bad = execute(dataReceived, servers, clients);
-                if (bad == 1)
-                    Console.WriteLine("bad format");
+                var ClientEp = new IPEndPoint(IPAddress.Any, 10000);
+                var ClientRequestData = server.Receive(ref ClientEp);
+                var ClientRequest = Encoding.ASCII.GetString(ClientRequestData);
+                Console.WriteLine(ClientRequest);
+                p = execute(ClientRequest, p);
 
             }
 
+        }
+
+        private static Program execute(string l, Program p)
+        {
+            string id;
+            Uri uri;
+            string[] splited = l.Split(new char[] { ' ' });
+            string cmd = splited[0];
+
+            switch (cmd)
+            {
+                case "Server":
+
+                    /*Compare here if the ip is the localhost is the same as requested ip, if it is executes below if not executes sendToPCS(l,ip,port)*/
+
+                    id = splited[1];
+                    if (p.getServers().ContainsKey(id))
+                    {
+                        break;
+                    }
+
+                    uri = new Uri(splited[2]);
+                    p.getUrls().Add(uri);
+                    p.getNames().Add(id);
+                    p.getUrlsD().Add(id, uri);
+                    int min_delay = Int32.Parse(splited[3]);
+                    int max_delay = Int32.Parse(splited[4]);
+                    Server s = new Server(id, uri, min_delay, max_delay);
+
+                    p.getServers().Add(id, s);
+                    p.setNumS(p.getNumS() + 1);
+                    Thread th = new Thread(new ThreadStart(s.executeByPuppet));
+                    th.Start();
+                    /*foreach (Server s2 in p.getServers().Values)
+                    {
+                        s2.setUrls(p.getUrlsD());
+                    }*/
+                    foreach (Client c2 in p.getClients().Values)
+                    {
+                        c2.setUrls(p.getUrls());
+                        c2.setNames(p.getNames());
+                    }
+
+
+
+
+                    break;
+
+                case "Client":
+
+                    id = splited[1];
+                    if (p.getClients().ContainsKey(id))
+                    {
+                        break;
+                    }
+
+                    uri = new Uri(splited[2]);
+                    string script = splited[3];
+
+                    Client c = new Client(id, uri, script, p.getUrls(), p.getNames());
+                    p.getClients().Add(id, c);
+                    Thread th2 = new Thread(new ThreadStart(c.executeByPuppet));
+                    th2.Start();
+
+                    break;
+
+                /* in this next commands, check if the ip is the same as localhost, if not need to get the information from PCS*/
+
+                case "Status":
+                    foreach (Server s2 in p.serversCrashed.Values)
+                        s2.status();
+                    foreach (Server s2 in p.getServers().Values)
+                        s2.status();
+                    break;
+
+                case "Crash":
+                    id = splited[1];
+                    if (p.getServers().ContainsKey(id))
+                    {
+
+                        p.setNumS(p.getNumS() - 1);
+                        p.getServers()[id].setCrash(true);
+                        p.serversCrashed.Add(id, p.getServers()[id]);
+                        p.getServers().Remove(id);
+                    }
+
+                    break;
+
+                case "Freeze":
+                    id = splited[1];
+                    if (p.getServers().ContainsKey(id))
+                        p.getServers()[id].setFreeze(true);
+                    break;
+
+                case "Unfreeze":
+                    id = splited[1];
+                    if (p.getServers().ContainsKey(id))
+                        p.getServers()[id].setFreeze(false);
+                    break;
+
+            }
+            return p;
         }
 
         public static string GetIPAddress()
@@ -64,92 +216,6 @@ namespace PCS
             }
             return localIP;
         }
-
-        private static int execute(string l, IDictionary<string, Server> servers, IDictionary<string, Client> clients)
-        {
-            Console.ReadLine();
-            int badIn = 0;
-            string id, url;
-            Uri uri;
-            string[] splited = l.Split(new char[] { ' ' });
-            string cmd = splited[0];
-            int delay;
-
-            switch (cmd)
-            {
-                case "Server":
-
-                    id = splited[1];
-                    if (servers.ContainsKey(id))
-                    {
-                        badIn = 1;
-                        break;
-                    }
-
-                    uri = new Uri(splited[2]);
-                    url = uri.AbsolutePath;
-                    int min_delay = Int32.Parse(splited[3]);
-                    int max_delay = Int32.Parse(splited[4]);
-
-                    Server s = new Server(id, url, min_delay, max_delay);
-                    servers.Add(id, s);
-                    Thread th = new Thread(new ThreadStart(s.executeByPuppet));
-                    th.Start();
-
-                    break;
-
-                case "Client":
-
-                    id = splited[1];
-                    if (clients.ContainsKey(id))
-                    {
-                        badIn = 1;
-                        break;
-                    }
-
-                    uri = new Uri(splited[2]);
-                    url = uri.AbsolutePath;
-                    string script = splited[3];
-
-                    Client c = new Client(id, url, script);
-                    clients.Add(id, c);
-                    Thread th2 = new Thread(new ThreadStart(c.executeByPuppet));
-                    th2.Start();
-
-                    break;
-
-                case "Status":
-
-                    foreach (Server s2 in servers.Values)
-                        s2.status();
-                    break;
-
-                case "Crash":
-                    id = splited[1];
-                    if (servers.ContainsKey(id))
-                        servers[id].setCrash(true);
-                    break;
-
-                case "Freeze":
-                    id = splited[1];
-                    if (servers.ContainsKey(id))
-                        servers[id].setFreeze(true);
-                    break;
-
-                case "Unfrezze":
-                    id = splited[1];
-                    if (servers.ContainsKey(id))
-                        servers[id].setFreeze(false);
-                    break;
-
-                case "Wait":
-                    Int32.TryParse(splited[1], out delay);
-                    System.Threading.Thread.Sleep(delay);
-                    break;
-            }
-            return badIn;
-        }
     }
-
 
 }
