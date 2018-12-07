@@ -73,8 +73,7 @@ namespace RemotingSample
             Task t = null;
             foreach (string s in urls.Keys)
             {
-                try
-                {
+                
                     if (urls[s].Equals(uri))
                     {
                         continue;
@@ -85,21 +84,24 @@ namespace RemotingSample
 
                     t = new Task(() =>
                     {
+                    try
+                    {
                         obj.update(tupleSpace2);
+                        }
+                        catch (Exception e)
+                    {
+                        if (e is RemotingException || e is SocketException)
+                        {
+                            serversDown.Add(s);
+
+                        }
+
+                    }
                     });
                     t.Start();
                     TaskList.Add(t);
 
-                }
-                catch (Exception e)
-                {
-                    if (e is RemotingException || e is SocketException)
-                    {
-                        serversDown.Add(s);
-
-                    }
-
-                }
+                
             }
             Task.WaitAll(TaskList.ToArray());
             foreach (string down in serversDown)

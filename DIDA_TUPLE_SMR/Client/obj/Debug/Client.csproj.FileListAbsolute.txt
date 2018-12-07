@@ -68,3 +68,13 @@ C:\Users\gonca\Desktop\aaaa\PADI_PROJ\DIDA_TUPLE_SMR\Client\obj\Debug\Client.csp
 C:\Users\gonca\Desktop\aaaa\PADI_PROJ\DIDA_TUPLE_SMR\Client\obj\Debug\Client.csproj.CopyComplete
 C:\Users\gonca\Desktop\aaaa\PADI_PROJ\DIDA_TUPLE_SMR\Client\obj\Debug\Client.exe
 C:\Users\gonca\Desktop\aaaa\PADI_PROJ\DIDA_TUPLE_SMR\Client\obj\Debug\Client.pdb
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\bin\Debug\Client.exe.config
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\bin\Debug\Client.exe
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\bin\Debug\Client.pdb
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\bin\Debug\CommonTypes.dll
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\bin\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\obj\Debug\Client.exe
+C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\Client\obj\Debug\Client.pdb
