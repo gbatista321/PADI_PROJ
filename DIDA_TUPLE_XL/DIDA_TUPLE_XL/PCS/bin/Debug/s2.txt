@@ -1,0 +1,8 @@
+begin-repeat 100
+
+add <"1">
+
+take <"2">
+
+end-repeat
+

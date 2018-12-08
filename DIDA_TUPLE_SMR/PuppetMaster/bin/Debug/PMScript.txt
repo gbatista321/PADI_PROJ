@@ -2,7 +2,8 @@ Server s1 tcp://192.168.1.90:50001/S 10 1000
 Server s2 tcp://192.168.1.90:50002/S 10 1000
 Server s3 tcp://192.168.1.90:50003/S 10 1000
 Wait 500
-Client c1 tcp://192.168.1.90:60001/C script.txt
+Client c1 tcp://192.168.1.90:60001/C s2.txt
+Client c2 tcp://192.168.1.90:60002/C s3.txt
 Status
 Freeze s1
 Unfreeze s1

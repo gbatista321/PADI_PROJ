@@ -13,7 +13,8 @@ using System.Runtime.Serialization.Formatters;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace RemotingSample {
+namespace RemotingSample
+{
 
     public class Client
     {
@@ -62,7 +63,7 @@ namespace RemotingSample {
             TcpChannel channel = new TcpChannel(props, null, provider);
             ChannelServices.RegisterChannel(channel, false);
             executeMain(1, fileName);
-            
+
         }
 
         public void status()
@@ -76,9 +77,9 @@ namespace RemotingSample {
         public static void repeatCmd(List<List<string>> field_list2, List<string> cmds)
         {
             int delay = 0;
-            List<List<Field>> lField=null;
+            List<List<Field>> lField = null;
             List<List<List<Field>>> lField2 = null;
-            for (int i=0;i<cmds.Count;i++)
+            for (int i = 0; i < cmds.Count; i++)
             {
                 int y = 0;
                 List<Task> TaskList = new List<Task>();
@@ -170,7 +171,7 @@ namespace RemotingSample {
                 {
                     List<List<Field>> tuplesToTake = new List<List<Field>>();
                     Random getrandom = new Random();
-                    
+
                     Task.WaitAll(TaskList.ToArray());
 
                     Console.WriteLine("--------------------------------------------------------------------------------");
@@ -194,30 +195,28 @@ namespace RemotingSample {
                     }
                     Console.WriteLine("--------------------------------------------------------------------------------");
 
-                   /* int rand = getrandom.Next(0, lField2.Count);
-                    tuplesToTake = lField2[rand];
-                    TaskList = new List<Task>();
-                    lField2 = new List<List<List<Field>>>();
-                    foreach (string server in names)
-                    {
-                        
-                        Console.WriteLine("Sending to server in" + urls[y] + "named " + server + " command: ");
-                        String reference = "tcp://localhost:" + urls[y].Port + "/MyRemoteObjectName/" + server;
-                        MyRemoteInterface obj = (MyRemoteInterface)Activator.GetObject(
-                        typeof(MyRemoteInterface), reference);
+                    /* int rand = getrandom.Next(0, lField2.Count);
+                     tuplesToTake = lField2[rand];
+                     TaskList = new List<Task>();
+                     lField2 = new List<List<List<Field>>>();
+                     foreach (string server in names)
+                     {
 
-                        t = new Task(() =>
-                        {
-                            lField = obj.take(field_list2[i]);
-                            while (lField == null)
-                                lField = obj.take(field_list2[i]);
-                            lField2.Add(lField);
-                        });
-
-                        t.Start();
-                        TaskList.Add(t);
-                    }
-                    Task.WaitAll(TaskList.ToArray());*/
+                         Console.WriteLine("Sending to server in" + urls[y] + "named " + server + " command: ");
+                         String reference = "tcp://localhost:" + urls[y].Port + "/MyRemoteObjectName/" + server;
+                         MyRemoteInterface obj = (MyRemoteInterface)Activator.GetObject(
+                         typeof(MyRemoteInterface), reference);
+                         t = new Task(() =>
+                         {
+                             lField = obj.take(field_list2[i]);
+                             while (lField == null)
+                                 lField = obj.take(field_list2[i]);
+                             lField2.Add(lField);
+                         });
+                         t.Start();
+                         TaskList.Add(t);
+                     }
+                     Task.WaitAll(TaskList.ToArray());*/
 
                 }
             }
@@ -233,7 +232,7 @@ namespace RemotingSample {
             urls = new List<Uri>(list);
         }
 
-        public static void executeMain(int args,string arg)
+        public static void executeMain(int args, string arg)
         {
             string str_fields = "";
             List<string> cmds = new List<string>();
@@ -279,37 +278,152 @@ namespace RemotingSample {
                     int y = 0;
                     List<Task> TaskList = new List<Task>();
                     Task t = null;
-                    foreach (string server in names)
+                    switch (cmd)
                     {
-                        Console.WriteLine("Sending to server in" + urls[y] + "named " + server + " command: " + l);
-                        String reference = "tcp://localhost:" + urls[y].Port + "/MyRemoteObjectName/" + server;
-                        MyRemoteInterface obj = (MyRemoteInterface)Activator.GetObject(
-                        typeof(MyRemoteInterface), reference);
 
-                        if (obj != null)
-                        {
-                            switch (cmd)
+                        case "wait":
+                            Int32.TryParse(str_fields, out delay);
+                            System.Threading.Thread.Sleep(delay);
+                            Console.WriteLine("delaying :" + delay);
+                            break;
+                        case "begin-repeat":
+                            Int32.TryParse(str_fields, out repeat);
+                            break;
+                        case "end-repeat":
+                            for (int i = 0; i < (repeat - 1); i++)
                             {
-                                case "add":
-                                    add += 1;
-                                    t = new Task(() =>
-                                    {
-                                        obj.add(field_list);
-                                    });
+                                repeatCmd(field_list2, cmds);
+                      
+                            }
+                            repeat = 0;
+                            break;
 
-                                    break;
-                                case "read":
-                                    read += 1;
-                                    t = new Task(() =>
-                                    {
-                                        lField = obj.readTuple(field_list);
-                                        while (lField == null)
-                                            lField = obj.readTuple(field_list);
-                                        lField2.Add(lField);
-                                    });
+                        default:
+                            foreach (string server in names)
+                            {
+                                Console.WriteLine("Sending to server in" + urls[y] + "named " + server + " command: " + l);
+                                String reference = "tcp://localhost:" + urls[y].Port + "/MyRemoteObjectName/" + server;
+                                MyRemoteInterface obj = (MyRemoteInterface)Activator.GetObject(
+                                typeof(MyRemoteInterface), reference);
 
-                                    break;
-                                case "take":
+                                if (obj != null)
+                                {
+                                    switch (cmd)
+                                    {
+                                        case "add":
+                                            add += 1;
+                                            t = new Task(() =>
+                                            {
+                                                obj.add(field_list);
+                                            });
+
+                                            break;
+                                        case "read":
+                                            read += 1;
+                                            t = new Task(() =>
+                                            {
+                                                lField = obj.readTuple(field_list);
+                                                while (lField == null)
+                                                    lField = obj.readTuple(field_list);
+                                                lField2.Add(lField);
+                                            });
+
+                                            break;
+                                        case "take":
+                                            t = new Task(() =>
+                                            {
+                                                lField = obj.take(field_list);
+                                                while (lField == null)
+                                                    lField = obj.take(field_list);
+                                                lField2.Add(lField);
+                                            });
+                                            break;
+                                    }
+                                }
+                                if (t != null)
+                                {
+                                    t.Start();
+                                    TaskList.Add(t);
+                                }
+                                y++;
+                            }
+                            if (repeat > 0)
+                            {
+                                if (!cmd.Contains("repeat"))
+                                {
+                                    if (cmd.Equals("wait"))
+                                    {
+                                        List<string> sl = new List<string>();
+                                        sl.Add(str_fields);
+                                        field_list2.Add(sl);
+                                    }
+                                    else
+                                        field_list2.Add(field_list);
+                                    cmds.Add(cmd);
+                                }
+                            }
+                            y = 0;
+                            Thread.Sleep(2000);
+                            if (read > 0)
+                            {
+                                Task.WaitAny(TaskList.ToArray());
+                                read = 0;
+                                foreach (List<Field> ls in lField)
+                                    foreach (Field f in ls)
+                                    {
+                                        if (f.getType() == 0 || f.getType() == 2)
+                                            Console.WriteLine(f.getClassName());
+                                        else
+                                            Console.WriteLine(f.getString());
+
+                                    }
+                                continue;
+                            }
+                            else if (add > 0)
+                            {
+
+                                Task.WaitAll(TaskList.ToArray());
+                                add = 0;
+                                continue;
+                            }
+                            else
+                            {
+                                List<List<Field>> tuplesToTake = new List<List<Field>>();
+                                Random getrandom = new Random();
+
+                                Task.WaitAll(TaskList.ToArray());
+
+                                Console.WriteLine("--------------------------------------------------------------------------------");
+                                foreach (List<List<Field>> lls in lField2)
+                                {
+                                    Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+                                    Console.WriteLine("                            TUPLES SELECTED FROM                           ");
+                                    foreach (List<Field> ls in lls)
+                                    {
+                                        foreach (Field f in ls)
+                                        {
+                                            if (f.getType() == 0 || f.getType() == 2)
+                                                Console.WriteLine(f.getClassName());
+                                            else
+                                                Console.WriteLine(f.getString());
+
+                                        }
+                                    }
+                                    Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                                }
+                                Console.WriteLine("--------------------------------------------------------------------------------");
+
+                                /*int rand = getrandom.Next(0, lField2.Count);
+                                TaskList = new List<Task>();
+                                lField2 = new List<List<List<Field>>>();
+                                foreach (string server in names)
+                                {
+
+                                    Console.WriteLine("Sending to server in" + urls[y] + "named " + server + " command: " + l);
+                                    String reference = "tcp://localhost:" + urls[y].Port + "/MyRemoteObjectName/" + server;
+                                    MyRemoteInterface obj = (MyRemoteInterface)Activator.GetObject(
+                                    typeof(MyRemoteInterface), reference);
                                     t = new Task(() =>
                                     {
                                         lField = obj.take(field_list);
@@ -317,125 +431,16 @@ namespace RemotingSample {
                                             lField = obj.take(field_list);
                                         lField2.Add(lField);
                                     });
-                                    break;
-
-                                case "wait":
-                                    Int32.TryParse(str_fields, out delay);
-                                    System.Threading.Thread.Sleep(delay);
-                                    Console.WriteLine("delaying :" + delay);
-                                    break;
-                                case "begin-repeat":
-                                    Int32.TryParse(str_fields, out repeat);
-                                    break;
-                                case "end-repeat":
-                                    for (int i = 0; i < (repeat - 1); i++)
-                                    {
-                                        repeatCmd(field_list2, cmds);
-                                    }
-                                    repeat = 0;
-                                    break;
-                            }
-                        }
-                        if (t != null)
-                        {
-                            t.Start();
-                            TaskList.Add(t);
-                        }
-                        y++;
-                    }
-                    if (repeat > 0)
-                    {
-                        if (!cmd.Contains("repeat"))
-                        {
-                            if (cmd.Equals("wait"))
-                            {
-                                List<string> sl = new List<string>();
-                                sl.Add(str_fields);
-                                field_list2.Add(sl);
-                            }
-                            else
-                                field_list2.Add(field_list);
-                            cmds.Add(cmd);
-                        }
-                    }
-                    y = 0;
-                    Thread.Sleep(2000);
-                    if (read > 0)
-                    {
-                        Task.WaitAny(TaskList.ToArray());
-                        read = 0;
-                        foreach (List<Field> ls in lField)
-                            foreach (Field f in ls)
-                            {
-                                if (f.getType() == 0 || f.getType() == 2)
-                                    Console.WriteLine(f.getClassName());
-                                else
-                                    Console.WriteLine(f.getString());
-
-                            }
-                        continue;
-                    }
-                    else if (add > 0)
-                    {
-
-                        Task.WaitAll(TaskList.ToArray());
-                        add = 0;
-                        continue;
-                    }
-                    else
-                    {
-                        List<List<Field>> tuplesToTake = new List<List<Field>>();
-                        Random getrandom = new Random();
-
-                        Task.WaitAll(TaskList.ToArray());
-
-                        Console.WriteLine("--------------------------------------------------------------------------------");
-                        foreach (List<List<Field>> lls in lField2)
-                        {
-                            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
-                            Console.WriteLine("                            TUPLES SELECTED FROM                           ");
-                            foreach (List<Field> ls in lls)
-                            {
-                                foreach (Field f in ls)
-                                {
-                                    if (f.getType() == 0 || f.getType() == 2)
-                                        Console.WriteLine(f.getClassName());
-                                    else
-                                        Console.WriteLine(f.getString());
-
+                                    t.Start();
+                                    TaskList.Add(t);
                                 }
+                                Task.WaitAll(TaskList.ToArray());*/
+
                             }
-                            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-                        }
-                        Console.WriteLine("--------------------------------------------------------------------------------");
-
-                        /*int rand = getrandom.Next(0, lField2.Count);
-                        TaskList = new List<Task>();
-                        lField2 = new List<List<List<Field>>>();
-                        foreach (string server in names)
-                        {
-                            
-                            Console.WriteLine("Sending to server in" + urls[y] + "named " + server + " command: " + l);
-                            String reference = "tcp://localhost:" + urls[y].Port + "/MyRemoteObjectName/" + server;
-                            MyRemoteInterface obj = (MyRemoteInterface)Activator.GetObject(
-                            typeof(MyRemoteInterface), reference);
-                            t = new Task(() =>
-                            {
-                                lField = obj.take(field_list);
-                                while (lField == null)
-                                    lField = obj.take(field_list);
-                                lField2.Add(lField);
-                            });
-
-                            t.Start();
-                            TaskList.Add(t);
-                        }
-                        Task.WaitAll(TaskList.ToArray());*/
-
+                            break;
                     }
                 }
-            }      
+            }
         }
 
 
@@ -462,27 +467,27 @@ namespace RemotingSample {
         }
         static List<string> argumentParser(string fields)
         {
-           
-            List<string> argsList = new List<string>();    
+
+            List<string> argsList = new List<string>();
             int bracket_counter = 0;
             int quote = 0;
             string cur_field = "";
             int i = 0;
             if (!fields.StartsWith(" < ") && !fields.EndsWith(">"))
-            { 
+            {
                 return null;
             }
-            fields = fields.Substring(1, fields.Length - 2);           
-            while(i < fields.Length)
+            fields = fields.Substring(1, fields.Length - 2);
+            while (i < fields.Length)
             {
-                
+
 
                 if (fields[i] == '"' && quote == 0)
                 {
                     cur_field += fields[i];
                     i++;
                     while (fields[i] != '"')
-                    {      
+                    {
                         cur_field += fields[i];
                         i++;
                         quote = 1;
@@ -499,7 +504,7 @@ namespace RemotingSample {
 
                 }
 
-                else if(fields[i] >= 'a' && fields[i] <= 'z' || fields[i] >= 'A' && fields[i] <= 'Z')
+                else if (fields[i] >= 'a' && fields[i] <= 'z' || fields[i] >= 'A' && fields[i] <= 'Z')
                 {
                     cur_field += fields[i];
                     i++;
@@ -519,7 +524,7 @@ namespace RemotingSample {
                         bracket_counter = 0;
                         cur_field = "";
                         i++;
-                    }                   
+                    }
                     else if (fields[i] == '(')
                     {
                         cur_field += fields[i];
@@ -530,7 +535,7 @@ namespace RemotingSample {
                             args += fields[i];
                             i++;
                         }
-                        
+
                         object[] splited = funcArgs(args.Split(','));
                         if (splited == null)
                             return null;
@@ -542,14 +547,14 @@ namespace RemotingSample {
 
                     }
                 }
-                else if(fields[i] == ',')
+                else if (fields[i] == ',')
                 {
                     bracket_counter = 1;
                     i++;
                     continue;
                 }
-            }     
-            if (bracket_counter==0)
+            }
+            if (bracket_counter == 0)
                 return argsList;
             else
                 return null;

@@ -20,3 +20,4 @@ C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\obj\Debug\Tuple
 C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\obj\Debug\TupleSpace.csproj.CoreCompileInputs.cache
 C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\obj\Debug\CommonTypes.dll
 C:\Users\gonca\Desktop\kkkk\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\obj\Debug\CommonTypes.pdb
+C:\Users\gonca\Desktop\padi\PADI_PROJ\DIDA_TUPLE_SMR\CommonTypes\obj\Debug\TupleSpace.csprojAssemblyReference.cache
